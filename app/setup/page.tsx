@@ -147,26 +147,7 @@ export default function SetupPage() {
 
   return (
     <div style={{ fontFamily: "'DM Sans', sans-serif", background: '#060a13', color: '#e2e8f0', minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
-      <style>{`
-        *{box-sizing:border-box;margin:0;padding:0}
-        ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
-        .btn-p{padding:10px 24px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;border:none;background:linear-gradient(135deg,#38bdf8,#34d399);color:#060a13;font-family:'DM Sans',sans-serif;transition:all .2s;box-shadow:0 4px 20px rgba(56,189,248,.2)}
-        .btn-p:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(56,189,248,.3)}
-        .btn-p:disabled{opacity:.4;cursor:not-allowed;transform:none}
-        .btn-g{padding:10px 24px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#94a3b8;font-family:'DM Sans',sans-serif;transition:all .2s}
-        .btn-g:hover{background:rgba(255,255,255,.06);color:#e2e8f0}
-        .inp{width:100%;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#e2e8f0;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s}
-        .inp:focus{border-color:rgba(56,189,248,.4)}
-        .inp::placeholder{color:#475569}
-        .lbl{display:block;font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
-        .mono{font-family:'Space Mono',monospace}
-        select.inp{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px}
-        @keyframes pulse-glow{0%,100%{opacity:.4}50%{opacity:1}}
-        @keyframes slideUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-        .drop-zone{border:2px dashed rgba(255,255,255,.1);border-radius:16px;padding:48px;text-align:center;transition:all .3s;cursor:pointer}
-        .drop-zone:hover,.drop-zone.active{border-color:rgba(56,189,248,.4);background:rgba(56,189,248,.04)}
-        .toast{position:fixed;top:24px;right:24px;padding:14px 22px;border-radius:12px;font-size:13px;font-weight:600;z-index:300;animation:slideUp .3s ease;backdrop-filter:blur(16px)}
-      `}</style>
+    
 
       {/* Background */}
       <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>

@@ -183,18 +183,6 @@ export default function Dashboard() {
 
   return (
     <div style={{ fontFamily: "'DM Sans', sans-serif", background: '#060a13', color: '#e2e8f0', minHeight: '100vh', position: 'relative' }}>
-      <style>{`
-        *{box-sizing:border-box;margin:0;padding:0}
-        ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
-        .mono{font-family:'Space Mono',monospace}
-        @keyframes pulse-glow{0%,100%{opacity:.4}50%{opacity:1}}
-        .row-hover{transition:background .15s}
-        .row-hover:hover{background:rgba(255,255,255,.03)!important}
-        .card-hover{transition:all .2s}
-        .card-hover:hover{border-color:rgba(56,189,248,.15)!important;transform:translateY(-1px)}
-        .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);z-index:200;display:flex;align-items:center;justify-content:center;animation:fadeIn .2s ease}
-        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-      `}</style>
 
       {/* ── Background ─────────────────────────────────────── */}
       <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
