@@ -383,7 +383,8 @@ function ImportStep({ platforms, onImport, notify, holdingsCount, anim, onFinish
     setImporting(true);
     const data = await onImport(file, selectedPlatformId);
     setResults(data);
-    if (data.success > 0) notify(`Imported ${data.success} trades`);
+    const count = data.success ?? data.trades_inserted ?? 0;
+    if (count > 0) notify(`Imported ${count} trades`);
     else notify(data.error || 'Import failed', 'error');
     setImporting(false);
   };
@@ -465,10 +466,10 @@ function ImportStep({ platforms, onImport, notify, holdingsCount, anim, onFinish
       )}
 
       {/* Results */}
-      {results && results.success !== undefined && (
+      {results && (results.success !== undefined || results.trades_inserted !== undefined) && (
         <div style={{ ...glass, padding: 20, marginBottom: 16, background: results.success > 0 ? 'rgba(52,211,153,.04)' : 'rgba(248,113,113,.04)' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
-            {[['IMPORTED', results.success, '#34d399'], ['FAILED', results.failed, '#f87171'], ['PARSED', results.totalParsed, '#38bdf8']].map(([l, v, c]) => (
+            {[['IMPORTED', results.success ?? results.trades_inserted ?? 0, '#34d399'], ['FAILED', results.failed ?? 0, '#f87171'], ['PARSED', results.totalParsed ?? results.trades_parsed ?? 0, '#38bdf8']].map(([l, v, c]) => (
               <div key={l as string} style={{ textAlign: 'center', padding: 12, background: 'rgba(255,255,255,.04)', borderRadius: 10 }}>
                 <div className="mono" style={{ fontSize: 24, fontWeight: 700, color: c as string }}>{v as number}</div>
                 <div style={{ fontSize: 10, color: '#64748b', fontWeight: 600 }}>{l as string}</div>
