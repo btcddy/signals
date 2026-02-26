@@ -1,24 +1,42 @@
-import { createClient } from '@supabase/supabase-js';
+import { createBrowserClient } from '@supabase/ssr';
+import { createServerClient as createSSRServerClient, type CookieOptions } from '@supabase/ssr';
+import { cookies } from 'next/headers';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-// Browser client — uses anon key, respects RLS
-export const supabaseBrowser = createClient(supabaseUrl, supabaseAnonKey);
+// Browser client (for Client Components — login page, dashboard, setup)
+export function createClient() {
+  return createBrowserClient(supabaseUrl, supabaseAnonKey);
+}
 
-// Server client — still uses anon key but from server context
-// Use this in API routes where you want RLS enforced with the user's JWT
-export function createServerClient(accessToken?: string) {
-  return createClient(supabaseUrl, supabaseAnonKey, {
-    global: {
-      headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
+// Server client (for API Routes + Server Components — uses cookies for auth)
+export async function createServerSupabase() {
+  const cookieStore = await cookies();
+
+  return createSSRServerClient(supabaseUrl, supabaseAnonKey, {
+    cookies: {
+      getAll() {
+        return cookieStore.getAll();
+      },
+      setAll(cookiesToSet) {
+        try {
+          cookiesToSet.forEach(({ name, value, options }) =>
+            cookieStore.set(name, value, options)
+          );
+        } catch {
+          // Called from Server Component — ignore
+        }
+      },
     },
   });
 }
 
-// Admin client — uses service role key, BYPASSES RLS
-// Only use in cron jobs, server-side operations, and trusted contexts
-export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
-  auth: { persistSession: false },
-});
+// Admin client (for cron jobs — bypasses RLS)
+export function createAdminClient() {
+  if (!supabaseServiceKey) {
+    throw new Error('Missing SUPABASE_SERVICE_ROLE_KEY');
+  }
+  return createBrowserClient(supabaseUrl, supabaseServiceKey);
+}
