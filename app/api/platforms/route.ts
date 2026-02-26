@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerSupabase } from '@/lib/supabase/client';
+import { createServerSupabase } from '@/lib/supabase/server';
 
 // GET: Fetch user's platforms
 export async function GET() {
