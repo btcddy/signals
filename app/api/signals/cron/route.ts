@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabaseAdmin } from '@/lib/supabase/client';
+import { createAdminClient } from '@/lib/supabase/server';
 import { fetchBatchPrices, extractClosePrices, getLatestClose } from '@/lib/services/price-service';
 import { generateSignals } from '@/lib/services/signal-engine';
 
@@ -20,6 +20,7 @@ export async function GET(req: NextRequest) {
 
   try {
     // 1. Get all unique tickers from active holdings across all users
+    const supabaseAdmin = createAdminClient();
     const { data: holdings, error: holdingsError } = await supabaseAdmin
       .from('holdings')
       .select('ticker')
