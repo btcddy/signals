@@ -184,7 +184,6 @@ export default function Dashboard() {
   return (
     <div style={{ fontFamily: "'DM Sans', sans-serif", background: '#060a13', color: '#e2e8f0', minHeight: '100vh', position: 'relative' }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap');
         *{box-sizing:border-box;margin:0;padding:0}
         ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
         .mono{font-family:'Space Mono',monospace}

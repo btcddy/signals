@@ -148,7 +148,6 @@ export default function SetupPage() {
   return (
     <div style={{ fontFamily: "'DM Sans', sans-serif", background: '#060a13', color: '#e2e8f0', minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap');
         *{box-sizing:border-box;margin:0;padding:0}
         ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
         .btn-p{padding:10px 24px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;border:none;background:linear-gradient(135deg,#38bdf8,#34d399);color:#060a13;font-family:'DM Sans',sans-serif;transition:all .2s;box-shadow:0 4px 20px rgba(56,189,248,.2)}
