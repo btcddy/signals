@@ -8,7 +8,7 @@ export type TradeAction = 'buy' | 'sell' | 'dividend' | 'split';
 export type TradeSource = 'manual' | 'csv_import';
 export type SignalLabel = 'strong_buy' | 'buy' | 'neutral' | 'sell' | 'strong_sell';
 export type TrendDirection = 'bullish' | 'bearish' | 'neutral';
-export type BrokerageFormat = 'schwab' | 'fidelity' | 'robinhood' | 'unknown';
+export type BrokerageFormat = 'schwab' | 'fidelity' | 'robinhood' |'alightfs' | 'unknown';
 
 // ---- Database Row Types ----
 
